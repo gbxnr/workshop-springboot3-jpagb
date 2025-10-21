@@ -24,8 +24,7 @@ public class User implements Serializable {
    private String phone;
    private String passsword; 
    
- public User() {	 
- }
+
 
  public User(long id, String name, String email, String phone, String passsword) {
 	super();
@@ -35,6 +34,10 @@ public class User implements Serializable {
 	this.phone = phone;
 	this.passsword = passsword;
  }
+
+ public User(Object object, String name2, String email2, String phone2, String passsword2) {
+	// TODO Auto-generated constructor stub
+}
 
  public long getId() {
 	return id;
