@@ -34,6 +34,9 @@ public class User implements Serializable {
 	this.phone = phone;
 	this.passsword = passsword;
  }
+ public User() {
+	 
+ }
 
  public User(Object object, String name2, String email2, String phone2, String passsword2) {
 	// TODO Auto-generated constructor stub
