@@ -1,17 +1,20 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.GenerationType;
 
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "tb_user")
 public class User implements Serializable {
 	
    private static final long serialVersionUID = 1L;
@@ -23,6 +26,10 @@ public class User implements Serializable {
    private String email;
    private String phone;
    private String passsword; 
+   
+   
+   @OneToMany(mappedBy = "client")
+   private List<Order> orders =new ArrayList<>();
    
 
 
@@ -81,6 +88,10 @@ public class User implements Serializable {
  public void setPasssword(String passsword) {
 	this.passsword = passsword;
  }
+ 
+ public List<Order> getOrders() {
+	return orders;
+ }
 
  @Override
  public int hashCode() {
@@ -98,5 +109,6 @@ public class User implements Serializable {
 	User other = (User) obj;
 	return id == other.id;
  }
+
  
 }
