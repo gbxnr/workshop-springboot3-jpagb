@@ -20,11 +20,12 @@ public class Product implements Serializable {
     private String price;
     private String imgUrl;
 
-    @Transient
+    @ManyToMany
+    @JoinTable(name = "tb_product_category",joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name ="category_id"))
     private Set<Category> categories = new HashSet<>(); // o set é uma interface e ele não pode ser instanciado
 
 public Product(){
-    
+
 }
 
     public Product(Long id, String imgUrl, String price, Double description, String name) {
