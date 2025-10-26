@@ -11,7 +11,7 @@ import java.util.Objects;
 
 
 @Embeddable
-public class Orderitempk implements Serializable {
+public class OrderItemPK implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @ManyToOne
@@ -39,10 +39,13 @@ public class Orderitempk implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Orderitempk that = (Orderitempk) o;
-        return Objects.equals(getOrder(), that.getOrder()) && Objects.equals(getProduct(), that.getProduct());
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        OrderItemPK other = (OrderItemPK) obj;
+        return Objects.equals(order, other.order) && Objects.equals(product, other.product);
     }
 
     @Override
