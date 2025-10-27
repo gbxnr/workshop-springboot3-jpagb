@@ -1,5 +1,6 @@
 package com.example.demo.resources;
 
+import java.net.URI;
 import java.util.List;
 
 
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entities.User;
 import com.example.demo.services.UserService;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -32,7 +34,8 @@ public class UserResource {
 	@PostMapping
 	public ResponseEntity<User> insert(@RequestBody User obj){
 		obj = service.insert(obj);
-		return  ResponseEntity.ok().body(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return  ResponseEntity.created(uri).body(obj);
 
 	}
 }
